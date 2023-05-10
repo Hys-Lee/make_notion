@@ -1,3 +1,34 @@
+# Note for this project
+
+핵심->페이지 이동, 메뉴바, 컴포넌트 추가기능, 다크모드, 토글
+
+* 공부재료
+hook이 머임
+History API
+세션과 쿠키
+Dom 대해 건략하게만
+
+페이지 이동
+Route, Link나 useNavigate
+
+호버링->css로 일단
+ㄴ> 미디어 판단을 인터렉션으로(Interaction Media Feature)
+
+노션 빈 페이지를 기본으로 만들 되, 각 줄에 추가되는 것들은 컴포넌트로 만들기
+즉, +혹은 전환 누르면 여러 컴포넌트 리스트들이 쫘라락 뜨도록
+
+공유랑 기타 메뉴버튼은 일단 만들어 놓곰
+
+다크모드는 html로 가능한건가? 다른 방법이 있는지도 확인>세미나때 나왔던 방법이 보통인듯?
+
+디렉토리는 ul태그가 추가되는 방식? 대충 틀만 만들고 실사례 찾아보자.
+ㄴ>4개이상은 생략자 이용하기
+
+
+
+
+--------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
