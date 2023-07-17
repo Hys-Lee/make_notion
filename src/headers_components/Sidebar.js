@@ -25,7 +25,7 @@ function MutualSidebar({sideSignals, children}){
 
         </>
         
-        
+         
     );
 }
 
