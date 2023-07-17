@@ -18,10 +18,10 @@ function MutualSidebar({sideSignals, children}){
     
     return(
         <>
-            {sideSignals.clicked?
+            {sideSignals.clicked ?
                 <StyledSidebar>{children}</StyledSidebar>:
                 <HoveredSidebar>{children}</HoveredSidebar>}
-
+  
 
         </>
         
