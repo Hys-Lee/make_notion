@@ -1,0 +1,14 @@
+#one{
+    background-color: bisque;
+}
+body div::after{
+    content: "0";
+    display: inline-block;
+    background-color: red;
+    margin-left:2em;
+    width:1em;
+    height: 1em;
+    text-align: center;
+    line-height: 1em;
+    color:white;
+}

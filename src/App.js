@@ -1,25 +1,80 @@
 import logo from './logo.svg';
+import Header from './headers_components/Header';
+import Sidebar from './headers_components/Sidebar';
+import styled from "styled-components"
+import { useState } from 'react';
+import { setSelectionRange } from '@testing-library/user-event/dist/utils';
+
 // import './App.css';
 
-function App() {
+const StyledApp = styled.div`
+    display:flex;
+    flex-direction: row; 
+    /* margin:0;
+    padding: 0; */
+    /* align-items:flex-end;
+    justify-content:stretch;
+    justify-items:stretch; */
+    justify-content:stretch;
+    
+    
+`;
+
+const StyledSidebar = styled(Sidebar)`
+  >div{
+    background-color:beige;
+    flex-basis : 230px;
+  }
+    
+`;
+const HoveredSidebar=styled(Sidebar)`
+  color:white;
+
+  
+`;
+
+
+
+export default function App() {
+  const [sideSignals, setSideSignals] = useState({clicked:false, hovered:false});
+  
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      
+      <StyledApp>
+     
+     {sideSignals.clicked&&<Sidebar sideSignals={sideSignals}onClose={newSideSignals=>{setSideSignals(newSideSignals)}}/>}
+     <Header
+       sideSignals={sideSignals} onShow={newSideSignals=>{setSideSignals(newSideSignals)}}
+       
+     />
+     
+     </StyledApp>
+     {(sideSignals.hovered===true && sideSignals.clicked===false)&&
+        <Sidebar 
+          sideSignals={sideSignals}
+          onClose={newSideSignals=>{setSideSignals(newSideSignals)}}
+        />} 
+      
+      {/* {(sideHovered&&!sideClicked)&&
+        <HoveredSidebar 
+          sideClicked={sideClicked}
+          onSideShow={handleSideHovered}
+          />} */}
+    </>
+    
+    
+      // <div style={{'display':'flex'}}>
+      //    <div>1</div>
+      //    <div>2</div>
+      // </div>
+      
+      
+     
+
   );
 }
 
-export default App;
+
