@@ -7,27 +7,70 @@ import { isDOMComponent } from "react-dom/test-utils";
 const StyledHeader = styled.div`
     display:flex;
     direction: row;
+    align-items:center;
     justify-content:space-between;
     flex-grow:1;
-
+    position:sticky;
+    height:50px;
     & .Left{
         display:flex;
     }
+
+    & .Right>div {
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        &>div{
+            padding:0 0.4em;
+            font-size:0.95em;
+        }
+    }
+
+
+`;
+const SideButton = styled.button`
+background:none;
+text-align:center;
+border:none;
+font-size:2em;
+padding:0 0.3em;
+
+&::after{
+    content:"${props=>props.bedgeCount}";
+    position:absolute;
+    /* display:inline-block;   */
+    left:2em;
+    background-color:red;
+    width:1em;
+    height:1em;
+    font-size:0.3em;
+    font-weight:700;
+    padding:0.3em;
+    text-align:center;
+    color:white;
+    border-radius:20%;
+    /* line-height:center; */
+    
+
+}
+
 `;
 
-
-function Headers({sideSignals, onShow}){
+function Headers({sideSignals, onShow, bedgeCount}){
     // const [clicked,setClicked] = useState(false);
     // const [hovered,setHovering] = useState(false);
 
     
     // console.log("!!!!");
+
+
     
 return (
     <StyledHeader>
         <div className="Header Left">
             {!sideSignals.clicked && 
-                <button 
+                <SideButton
+                    bedgeCount={bedgeCount}
                     onClick={()=>{onShow({
                         ...sideSignals,
                         clicked:true
@@ -42,7 +85,7 @@ return (
                     })}}
                 >
                     +{/* {sideHovered? ">>" :"+"} */}
-                </button>}
+                </SideButton>}
             {/* <div classNmae = "SideIcon" onmouseleave={()=>{setHovering(true)}} onMouseLeave={()=>{setHovering(false)}}>
             </div>  */}
             {/* ㄴ> Too many rerendering이라고 에러가 남. 뭔가 event랑 State관련해서 rendering문제인 것 같아서,
@@ -53,8 +96,7 @@ return (
             <SiteBranch />
         </div>
         <div className="Header Right">
-            <div className="etc" style={
-            {display:"flex",justifyContent:"space-around"}}>
+            <div className="etc" >
                 <div>공유</div>
                 <div>업데이트</div>
                 <div>고정</div>

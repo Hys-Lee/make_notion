@@ -7,11 +7,14 @@ import { styled } from "styled-components";
 const StyledSidebar=styled.div`
     background-color:beige;
     flex-basis : 230px;
+
 `;
 const HoveredSidebar=styled(StyledSidebar)`
-    /* position:absolute; */
+    position:absolute;
     display:inline-block;
-    padding-top:20px;
+    /* transform:translate(0px,50px); */
+    
+    
 `;
 function MutualSidebar({sideSignals, children}){
 
@@ -102,7 +105,7 @@ function Sidebar({sideSignals, onClose}){
         <MutualSidebar sideSignals={sideSignals}>
             
             <div
-                onMouseOver={()=>{onClose({...sideSignals, hovered:true});}} 
+                onMouseEnter={()=>{onClose({...sideSignals, hovered:true});}} 
                 onMouseLeave={()=>{onClose({...sideSignals, hovered:false});}}
             >
                 <div>
@@ -115,7 +118,8 @@ function Sidebar({sideSignals, onClose}){
                                     onClick={()=>{
                                         onClose({
                                             ...sideSignals,
-                                            clicked:false
+                                            clicked:false,
+                                            hovered:false
                                         })
                                     }}
                                 >
