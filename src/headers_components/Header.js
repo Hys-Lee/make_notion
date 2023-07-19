@@ -5,15 +5,21 @@ import SiteBranch from "./SiteBranch";
 import { isDOMComponent } from "react-dom/test-utils";
 
 const StyledHeader = styled.div`
+
     display:flex;
     direction: row;
     align-items:center;
     justify-content:space-between;
-    flex-grow:1;
+    /* flex-grow:1; */
+    flex-basis:50px;
     position:sticky;
     height:50px;
     & .Left{
         display:flex;
+        height:100%;
+        /* align-items:stretch; */
+        
+        
     }
 
     & .Right>div {
@@ -29,6 +35,7 @@ const StyledHeader = styled.div`
 
 `;
 const SideButton = styled.button`
+height:100%;
 background:none;
 text-align:center;
 border:none;

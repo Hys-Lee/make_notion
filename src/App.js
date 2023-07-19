@@ -17,6 +17,7 @@ const StyledApp = styled.div`
     justify-content:stretch;
     justify-items:stretch; */
     /* justify-content:stretch; */
+    height:100vh;
     
     
 `;
@@ -24,9 +25,14 @@ const StyledApp = styled.div`
 const MainSection = styled.div`
   display:flex;
   flex-direction:column;
-  align-items:center;
-
+  align-items:stretch;
+  /* flex-basis:1; */
+  flex-grow:1;
 `;
+
+
+
+
 
 
 export default function App() {
@@ -34,8 +40,9 @@ export default function App() {
   const [totalBedgeCount, setTotalBedgeCounts] = useState(0);
   if(sideSignals.hovered){console.log("hovering!!");}
 
+
   return (
-    <>
+    <div>
       
       <StyledApp>
      
@@ -47,14 +54,21 @@ export default function App() {
             onShow={newSideSignals=>{setSideSignals(newSideSignals)}}
             bedgeCount={totalBedgeCount}
           />
-          <MainBody />
+          
+          <MainBody 
+            sideSignals={sideSignals}
+            onHover={newSideSignals=>{setSideSignals(newSideSignals)}}
+          />
         </MainSection>
         
-        
+        {/* hovered sidebar */}
+     
         
      </StyledApp>
 
-     {/* hovered sidebar */}
+    
+     
+
      {(sideSignals.hovered===true && sideSignals.clicked===false)&&
         <Sidebar 
           sideSignals={sideSignals}
@@ -62,7 +76,7 @@ export default function App() {
         />} 
       
 
-    </>
+    </div>
     
     
       // <div style={{'display':'flex'}}>

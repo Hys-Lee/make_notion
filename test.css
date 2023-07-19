@@ -1,7 +1,14 @@
+#main{
+    height:50vh;
+}
 #one{
     background-color: bisque;
 }
-body div::after{
+#sidebar{
+    position: absolute;
+    top:0;
+}
+/* body> div :nth-child(1)::after{
     content: "0";
     display: inline-block;
     background-color: red;
@@ -11,4 +18,4 @@ body div::after{
     text-align: center;
     line-height: 1em;
     color:white;
-}
+} */

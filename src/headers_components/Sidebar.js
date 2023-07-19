@@ -12,6 +12,9 @@ const StyledSidebar=styled.div`
 const HoveredSidebar=styled(StyledSidebar)`
     position:absolute;
     display:inline-block;
+    z-index:100;
+    top:60px;
+
     /* transform:translate(0px,50px); */
     
     
