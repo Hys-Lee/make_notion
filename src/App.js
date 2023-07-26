@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import Header from './headers_components/Header';
 import Sidebar from './headers_components/Sidebar';
 import styled from "styled-components"
@@ -11,23 +10,41 @@ const StyledApp = styled.div`
     display:flex;
     flex-direction: row; 
     justify-content:stretch;
-    /* margin:0;
-    padding: 0; */
-    /* align-items:flex-end;
-    justify-content:stretch;
-    justify-items:stretch; */
-    /* justify-content:stretch; */
-    height:100vh;
+    
+    width:100vw;
+    height:auto;
+
+    /* top:0px; */
     
     
+    /* overflow-x:hidden; */
 `;
 
 const MainSection = styled.div`
   display:flex;
   flex-direction:column;
   align-items:stretch;
-  /* flex-basis:1; */
+  flex-shrink:1;
   flex-grow:1;
+  max-width:100%;
+  min-width:0%;
+  /* height:auto; */
+
+  /* height:${(props)=>{
+    if(props.MouseElseWhere===true){
+      return "auto";
+    }else{
+      return "auto";
+    }
+  }}; */
+  
+  
+/*   
+  height:100vh;
+  overflow-y:hidden; */
+  
+  top:0px;
+  
 `;
 
 
@@ -38,23 +55,43 @@ const MainSection = styled.div`
 export default function App() {
   const [sideSignals, setSideSignals] = useState({clicked:false, hovered:false});
   const [totalBedgeCount, setTotalBedgeCounts] = useState(0);
-  if(sideSignals.hovered){console.log("hovering!!");}
+  const [scrollPrevented, setScrollPrevented] = useState(false);
+  const [coverZindex, setCoverZindex]  = useState(-1);
 
+  function handleCoverZindex(hide){
+    if(hide){
+      setCoverZindex(5);  // 안 보일 임의 값
+      console.log("hide");
+    }else{
+      setCoverZindex(-5);
+      console.log("show");
+    }
+  }
+
+  if(scrollPrevented){/// 나중에 처리
+    console.log("hovering!!");
+    
+  }
+  
 
   return (
     <div>
-      
-      <StyledApp>
-     
-        {sideSignals.clicked&&<Sidebar sideSignals={sideSignals}onClose={newSideSignals=>{setSideSignals(newSideSignals)}}/>}
+      <StyledApp 
+        onKeyDown={()=>{handleCoverZindex(true)}}
+        onMouseMove={()=>{handleCoverZindex(false)}}
+      >
+        
+        {sideSignals.clicked&&<Sidebar onHoveredMouse={(newScrollPrevented)=>{setScrollPrevented(newScrollPrevented)}}  sideSignals={sideSignals}onClose={newSideSignals=>{setSideSignals(newSideSignals)}}/>}
         <MainSection>
         
           <Header
+            coverZindex={coverZindex}
+            onHoveredMouse={(newScrollPrevented)=>{setScrollPrevented(newScrollPrevented)}}
             sideSignals={sideSignals} 
             onShow={newSideSignals=>{setSideSignals(newSideSignals)}}
             bedgeCount={totalBedgeCount}
           />
-          
+
           <MainBody 
             sideSignals={sideSignals}
             onHover={newSideSignals=>{setSideSignals(newSideSignals)}}
@@ -71,6 +108,8 @@ export default function App() {
 
      {(sideSignals.hovered===true && sideSignals.clicked===false)&&
         <Sidebar 
+
+          onHoveredMouse={(newScrollPrevented)=>{setScrollPrevented(newScrollPrevented)}}
           sideSignals={sideSignals}
           onClose={newSideSignals=>{setSideSignals(newSideSignals)}}
         />} 
