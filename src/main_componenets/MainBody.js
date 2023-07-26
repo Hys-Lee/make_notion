@@ -30,7 +30,7 @@ const TitleBox = styled.h1`
         
         width:200px;
         
-        overflow-y:visible;
+        overflow-y:visible; 
     }
 `;
 export default function MainBody({sideSignals, onHover}){
