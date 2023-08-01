@@ -1,0 +1,21 @@
+#main{
+    height:50vh;
+}
+#one{
+    background-color: bisque;
+}
+#sidebar{
+    position: absolute;
+    top:0;
+}
+/* body> div :nth-child(1)::after{
+    content: "0";
+    display: inline-block;
+    background-color: red;
+    margin-left:2em;
+    width:1em;
+    height: 1em;
+    text-align: center;
+    line-height: 1em;
+    color:white;
+} */
