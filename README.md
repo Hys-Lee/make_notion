@@ -10,11 +10,14 @@
 <br>
 
 ## 소개
+
 토이 프로젝트 <br>
 Notion의 '새 페이지' 화면 모킹을 목표로 제작<br>
 
+<br>
+
 ## 기능
-* 사이드바 동작
+* 사이드바 활성/비활성 동작
 * 반응형 네비게이션
 
 <br>
@@ -24,9 +27,9 @@ Notion의 '새 페이지' 화면 모킹을 목표로 제작<br>
 
 > ### 기술 스택
 
-- React
-- React-router-dom
-- Styled-Component
+  - React
+  - React-router-dom
+  - Styled-Component
 
 <br>
 
